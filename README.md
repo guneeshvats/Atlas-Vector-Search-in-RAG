@@ -1,2 +1,2 @@
-# Atlas-Vector-Search-in-RAG
+# Semantic Search for Movie Recommendation
 Atlas Vector Search in RAG
