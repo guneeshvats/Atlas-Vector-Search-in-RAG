@@ -1,3 +1,4 @@
+
 # 🎥 Semantic Search for Movie Recommendation  
 **Atlas Vector Search in RAG**
 
@@ -11,3 +12,87 @@ Start by installing the required dependencies:
 
 ```bash
 pip install pymongo sentence-transformers
+```
+
+1. **MongoDB Atlas Setup**:  
+   We're using a sample movie dataset hosted on a MongoDB Atlas server. You'll need to connect your local environment to the MongoDB Atlas instance.
+
+   **Steps to Connect:**
+   - Go to your project in MongoDB Atlas.
+   - Navigate to: **Drivers** > **Connection String**.
+   - Replace `<Your MongoDB URI>` with your MongoDB URI and ensure to insert your actual password where needed.
+
+2. **Embedding Creation**:  
+   To generate embeddings for the movie plots, we use a free model from Hugging Face:  
+   Model: `sentence-transformers/all-MiniLM-L6-v2`.
+
+---
+
+## 🚀 How It Works
+
+The movie dataset contains a field called `plot`, which holds a summary of the movie plot. We will generate embeddings for these summaries using the `sentence-transformers` library. After generating the embeddings, you'll notice a new field created in your MongoDB Atlas collection, which stores the plot embeddings.
+
+---
+
+### 🧑‍💻 Usage  
+
+1. **Embedding Generation**:  
+   Once the dataset is connected to the MongoDB Atlas server, run the following script to generate embeddings for the `plot` field:
+
+   ```bash
+   python generate_embeddings.py
+   ```
+
+   You can specify how many embeddings you want to generate by adjusting the parameters in the script.
+
+2. **Querying with Embeddings**:  
+   After generating the embeddings, you can perform searches using the vectorized representations. Run the following script to search for movie recommendations based on a query:
+
+   ```bash
+   python use_embeddings.py --query "<your-query>"
+   ```
+
+   Replace `<your-query>` with the plot description or keywords you're interested in.
+
+---
+
+## 📊 Example
+
+Once the embeddings are generated, you'll see a new field added to the MongoDB Atlas server, like this:
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd77b1a8-a514-4551-8496-b96bd66c43a9" width="600">
+</p>
+
+After running a query, the output might look like this:
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/39b2e64a-ff66-413d-bbf1-c2e41668a539" width="600">
+</p>
+
+---
+
+## 📝 Notes  
+
+- **Model:** We're using the `sentence-transformers/all-MiniLM-L6-v2` model, which provides a good balance between speed and accuracy for generating embeddings from text data.
+- **Customization:** You can modify the `generate_embeddings.py` script to generate a different number of embeddings based on the dataset size or use case.
+
+---
+
+## 🗃️ Files Overview  
+
+- `generate_embeddings.py` - Generates plot embeddings and stores them in MongoDB Atlas.
+- `use_embeddings.py` - Searches for relevant movie recommendations based on a vectorized query.
+
+---
+
+## 💡 Suggestions for Improvement
+
+- **Enhance the Dataset**: Consider adding more metadata fields (e.g., genres, directors, actors) to improve recommendation accuracy.
+- **Fine-Tune the Model**: You can explore fine-tuning the sentence-transformers model on your dataset for better embedding relevance.
+
+---
+
+## ⚖️ License
+
+This project is licensed under the MIT License.
