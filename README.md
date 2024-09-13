@@ -22,3 +22,8 @@ In the dataset there is a summary of the plot in the `plot` field.
 First we will generate embeddings of those plot themes. 
 Once we generate embeddings we can see the dataset is connected to mongoDB Atlas server we can see a new field there
 ![image](https://github.com/user-attachments/assets/dd77b1a8-a514-4551-8496-b96bd66c43a9)
+
+
+Then we do this 
+
+![image](https://github.com/user-attachments/assets/39b2e64a-ff66-413d-bbf1-c2e41668a539)
